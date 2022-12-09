@@ -17,6 +17,12 @@ class Assignment
 	def cover?(other)
 		self.range.cover?(other.range)
 	end
+
+	def overlaps?(other)
+		self.range.cover?(other.range.first) || 
+		  self.range.cover?(other.range.last) || 
+		  other.range.cover?(self.range)
+	end
 end
 
 class AssignmentPair
@@ -33,6 +39,11 @@ class AssignmentPair
 	def assignment_covers_other?
 		a1, a2 = @assignments
 		a1.cover?(a2) || a2.cover?(a1)
+	end
+
+	def assignment_overlaps_other?
+		a1, a2 = @assignments
+		a1.overlaps?(a2) || a2.overlaps?(a1)
 	end
 
 	def ==(other)
