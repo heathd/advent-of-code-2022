@@ -15,12 +15,18 @@ class Move
 	end
 
 	def apply(stack)
-		stack_being_moved = stack[from-1]
-		stack_being_moved.size
 		keep = stack[from-1][0...-crates]
 		move = stack[from-1][-crates..-1]
 		stack[from-1] = keep
 		stack[to-1] = stack[to-1] + move.reverse
+		stack
+	end
+
+	def apply9001(stack)
+		keep = stack[from-1][0...-crates]
+		move = stack[from-1][-crates..-1]
+		stack[from-1] = keep
+		stack[to-1] = stack[to-1] + move
 		stack
 	end
 

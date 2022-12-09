@@ -20,6 +20,12 @@ class CrateMovement
 		end
 	end
 	
+	def apply_moves9001
+		moves.inject(start_arrangement) do |start_arrangement, move|
+			move.apply9001(start_arrangement)
+		end
+	end
+	
 	def start_pos
 		%w{A B}
 	end
